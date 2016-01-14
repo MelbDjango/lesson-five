@@ -5,9 +5,11 @@
     <title>Example Django Form!</title>
   </head>
   <body>
-    {% if person %}
-      <h1>Hello {{ person.name }}</h1>
-      <h2>You are {% if person.awesome %}AWESOME{% else %}totes lame{% endif %}</h2>
+    {% if name %}
+    <h1>Hello {{ name }}</h1>
+    {% endif %}
+    {% if is_awesome %}
+    <h2>You are awesome</h2>
     {% endif %}
 
     <form method="POST">
