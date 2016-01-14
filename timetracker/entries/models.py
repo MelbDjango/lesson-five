@@ -17,7 +17,6 @@ class Project(models.Model):
         return '<{}> {}'.format(self.client, self.name)
 
 
-# Create your models here.
 class Entry(models.Model):
     start = models.DateTimeField(default=timezone.now)
     stop = models.DateTimeField(blank=True, null=True)
@@ -28,7 +27,9 @@ class Entry(models.Model):
         verbose_name_plural = 'entries'
 
     def __str__(self):
-        return '[{} - {}] ({}) {}'.format(self.start, self.stop, self.project.name, self.description)
+        return '[{} - {}] ({}) {}'.format(
+            self.start, self.stop, self.project, self.description
+        )
 
     def is_finished(self):
         return self.stop is not None

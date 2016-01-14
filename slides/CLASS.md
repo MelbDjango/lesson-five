@@ -479,7 +479,7 @@ class PersonCreateView(CreateView):
     context_object_name = 'person' # "object" is the default
 
     def get_context_data(self, **kwargs):
-        context = super(PersonCreateView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['name'] = self.person.name
         return context
 

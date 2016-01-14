@@ -1,7 +1,7 @@
 from django import forms
 from django.utils import timezone
 
-from .models import Project, Client
+from .models import Client, Project
 
 
 class ClientForm(forms.Form):
@@ -9,8 +9,8 @@ class ClientForm(forms.Form):
 
 
 class ProjectForm(forms.Form):
-	name = forms.CharField()
-	client = forms.ModelChoiceField(queryset=Client.objects.all())
+    name = forms.CharField()
+    client = forms.ModelChoiceField(queryset=Client.objects.all())
 
 
 class EntryForm(forms.Form):
@@ -37,7 +37,7 @@ class EntryForm(forms.Form):
         """
         # Call parent's clean method to ensure any validation logic in parent class
         # is preserved
-        cleaned_data = super(EntryForm, self).clean()
+        cleaned_data = super().clean()
 
         # Get the start and end values from the cleaned_data dictionary, or None
         # if the dictionary keys are missing
@@ -46,4 +46,3 @@ class EntryForm(forms.Form):
 
         if end and start and (end < start):
             raise forms.ValidationError('End time must come after start time')
-        # No need to return anything (Django 1.7 and above)

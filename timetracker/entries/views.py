@@ -16,7 +16,7 @@ def clients(request):
             # client.save()
             # Sometimes you don't want to save the object until the end,
             # sometimes you don't care!
-            client = Client.objects.create(name=form.cleaned_data['name'])
+            Client.objects.create(name=form.cleaned_data['name'])
             return redirect('client-list')
     else:
         form = ClientForm()
@@ -99,7 +99,7 @@ def project_detail(request, pk):
         if form.is_valid():
             # Update project details
             project.name = form.cleaned_data['name']
-            project.client=form.cleaned_data['client']
+            project.client = form.cleaned_data['client']
             project.save()
             return redirect('project-list')
     else:
